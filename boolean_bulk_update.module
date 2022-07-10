@@ -1,0 +1,9 @@
+<?php
+
+function boolean_bulk_update_execute($nids, $field, &$context) {
+
+}
+
+function boolean_bulk_update_finished($success) {
+    
+}

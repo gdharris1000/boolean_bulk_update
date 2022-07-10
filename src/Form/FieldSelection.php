@@ -68,7 +68,20 @@ class FieldSelection extends FormBase {
     //Submit Form
 
     public function submitForm(array &$form, FormStateInterface $form_state) {
-        $messenger = \Drupal::messenger()->addMessage('hello');
+        $content_type = $form_state->getValue('type');
+        //Get node ids
+        $nids = \Drupal::entityQuery('node')->condition('type', $content_type)->execute();
+
+        // $operations = [
+        //     ['boolean_bulk_update', [$nids]]
+        // ];
+
+        $batch = [
+            'title' => $this->t('Updating nodes'),
+            'operations' => [['boolean_bulk_update_execute', [$nids]]],
+            'finished' => 'boolean_bulk_update_finished'
+        ];
+        batch_set($batch);
     }
 
     public function getTypeOptions(): array {
