@@ -1,9 +1,22 @@
 <?php
 
-function boolean_bulk_update_execute($nids, $field, &$context) {
+function boolean_bulk_update_execute($nids, $field, $new_value, &$context) {
+    foreach($nids as $nid) {
+        //Get node
+        $node = \Drupal::service('entity_type.manager')->getStorage('node')->load($nid);
 
+        $node->set($field, $new_value);
+        $node->save();
+    }
 }
 
 function boolean_bulk_update_finished($success) {
-    
+    if ($success) {
+        $message = t('Fields updated');
+    }
+    else {
+        $message = t('Finished with error(s)');
+    }
+
+    \Drupal::messenger()->addStatus($message);
 }
