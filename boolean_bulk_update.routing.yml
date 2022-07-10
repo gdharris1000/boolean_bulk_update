@@ -1,0 +1,7 @@
+boolean_bulk_update:
+  path: "/admin/boolean_bulk_update"
+  defaults:
+    _form: '\Drupal\boolean_bulk_update\Form\FieldSelection'
+    _title: "Boolean Bulk Update"
+  requirements:
+    _permission: "Administrator"
