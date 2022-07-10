@@ -1,0 +1,5 @@
+boolean_bulk_update:
+  title: "Boolean Bulk Update"
+  description: "Set the value of a boolean field to be the same on every existing page of a chosen content type."
+  route_name: boolean_bulk_update
+  parent: "system.admin_config_content"
