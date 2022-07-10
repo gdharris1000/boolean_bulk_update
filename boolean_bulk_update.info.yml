@@ -1,0 +1,4 @@
+name: Boolean Bulk Update
+description: Bulk update to change the value of a chosen boolean field
+type: module
+core_version_requirement: ^8 || ^9
