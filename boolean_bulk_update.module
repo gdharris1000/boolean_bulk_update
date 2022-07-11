@@ -1,15 +1,18 @@
 <?php
 
+//Set field value to the new value provided
 function boolean_bulk_update_execute($nids, $field, $new_value, &$context) {
     foreach($nids as $nid) {
         //Get node
         $node = \Drupal::service('entity_type.manager')->getStorage('node')->load($nid);
-
+        //Assign new value
         $node->set($field, $new_value);
+        //Save node
         $node->save();
     }
 }
 
+//Confirmation message when batch process has finished
 function boolean_bulk_update_finished($success) {
     if ($success) {
         $message = t('Fields updated');

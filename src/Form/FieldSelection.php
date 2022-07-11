@@ -70,7 +70,6 @@ class FieldSelection extends FormBase {
     }
 
     //Submit Form
-
     public function submitForm(array &$form, FormStateInterface $form_state) {
         
         $content_type = $form_state->getValue('type');
